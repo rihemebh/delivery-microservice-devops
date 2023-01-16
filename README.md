@@ -11,7 +11,7 @@ The reosons behind choosing the microservice architecture is:
 - The ability to scale the service of orders independtly whenever we have a lot of demand 
 
 
-<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/data%20(1).gif" width=350 height=450 />
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/data%20(1).gif" width=400 height=450 />
 
 
 
@@ -61,3 +61,7 @@ The different metrics are set using prometheus: cpu usage, memory usage, number 
 we can vizualize the diferent metrics using Grafana 
 
 //image 
+
+
+
+
