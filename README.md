@@ -81,7 +81,7 @@ A bussiness metric is called **order-count** is the one responsible for counting
 
 We can vizualize the diferent metrics using Grafana:
 
-<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/Grafana.png" />
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/grafana1.png" />
 
 
 
