@@ -71,7 +71,9 @@ The provisioning of the helm release of argocd is made by the second stack of Te
 
 The deployment is automated using argoCD 
 
-// image 
+Network visualization of the api-gateway
+
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-gateway.png" />
 
 ## Monitoring 
 
