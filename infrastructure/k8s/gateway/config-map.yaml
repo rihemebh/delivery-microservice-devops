@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-configmap
+data:
+  "ORDER_HOST": order-service.prod-ms-order
+  "PRODUCT_HOST": product-service.prod-ms-product

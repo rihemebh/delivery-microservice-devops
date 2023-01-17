@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all
+  namespace: prod-ms-product
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: product-network-policy
+  namespace: prod-ms-product #name space of resource we want to secure 
+spec:
+  podSelector: # this network policy is implemented for those pods 
+    matchLabels:
+      app: product
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:  # only allow traffic from those pods 
+            matchLabels:
+              app: gateway
+        - podSelector:
+            matchLabels:
+              namespace: default
+      ports:
+        - protocol: TCP
+          port: 3002

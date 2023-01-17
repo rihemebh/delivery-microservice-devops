@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+  namespace: prod-ms-product
+  labels:
+    app : product
+spec:
+  selector:
+    app: product
+  ports:
+  - port: 3002
+    protocol: TCP
+  type: NodePort

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: product-deployment
+  namespace: prod-ms-product
+  labels: 
+    app: product
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: product
+  template: 
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers: 
+        - name: product
+          image: dockeriheme/product
+          env:
+           - name: NODE_ENV
+             value: "production"
+           - name: "CONNECTION_STRING"
+             valueFrom: 
+               secretKeyRef:
+                  name: db
+                  key: "CONNECTION_STRING"
+          ports: 
+            - containerPort: 3002

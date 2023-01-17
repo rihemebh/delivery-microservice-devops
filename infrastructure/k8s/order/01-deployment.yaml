@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: order-deployment
+  namespace: prod-ms-order
+  labels: 
+    app: order
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: order
+  template: 
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers: 
+        - name: order
+          image: dockeriheme/order
+          env:
+           - name: NODE_ENV
+             value: "production"
+           - name: "CONNECTION_STRING"
+             valueFrom: 
+               secretKeyRef:
+                  name: db
+                  key: "CONNECTION_STRING"
+          resources:  
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "228Mi"
+              cpu: "1000m"
+          ports: 
+            - containerPort: 3001
