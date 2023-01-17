@@ -1,5 +1,3 @@
-#!/usr/bin/env bash  
-set -e 
 
 
 kubectl get secret gateway-chart-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo

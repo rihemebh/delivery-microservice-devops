@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@opentelemetry/exporter-prometheus": "^0.35.0",
+    "@opentelemetry/sdk-node": "^0.35.0",
+    "nestjs-otel": "^5.0.0"
+  }
+}

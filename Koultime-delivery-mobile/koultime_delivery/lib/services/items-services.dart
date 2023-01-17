@@ -9,8 +9,7 @@ import 'package:koultime_delivery/data/menu-item.dart';
 class ItemService {
   Future<List<dynamic>> getItems() async {
     try {
-      var url = Uri.parse(
-          "http://34.201.41.26/menu-items?fbclid=IwAR2ofNwppY_jP5m0JHazAwJE1L_Qr1WYQdq4RU_JdlItoBgzQDh14YYIHOs");
+      var url = Uri.parse("http://20.67.140.160:3000/products");
 
       var response = await http.get(url);
 
@@ -23,11 +22,10 @@ class ItemService {
 
   Future<void> makeOrder(List<int> itemsList) async {
     try {
-      var url = Uri.parse("http://44.202.155.192:4001/online-order");
+      var url = Uri.parse("http://20.67.140.160:3000/add-order");
       Map body = {
-        "type": "online",
-        "orderedItems": itemsList.toString(),
-        "address": 'Rue habib borguiba'
+        "username": "riheme",
+        "items": itemsList.toString(),
       };
       Map<String, String> customHeaders = {"content-type": "application/json"};
 

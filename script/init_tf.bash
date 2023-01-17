@@ -1,6 +1,9 @@
 #!/usr/bin/env bash  
 
-cd ../infrastructure/terraform/stack_1
+set -e
+
+TERR_PATH="$(readlink -f terraform)"
+cd ${TERR_PATH}/stack_1
 terraform apply
-cd ../stack_2
+cd ${TERR_PATH}/stack_2
 terraform apply

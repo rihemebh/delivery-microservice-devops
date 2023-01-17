@@ -12,6 +12,7 @@ Microservice application developed with NestJs and deployed on kubernetes
 - Prometheus 
 - Grafana 
 - ArgoCD
+- OpenTelemetry
 
 # Overview (DEV)
 
@@ -85,7 +86,7 @@ The deployment is automated using argoCD
 
 #### Tree of the order microservice 
 
-<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-order.png.png" />
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-order.png" />
 
 ## Monitoring 
 
@@ -107,7 +108,7 @@ Used Nest.js logger to collect logs.
 
 ### Traces 
 
-
+I used OpenTelemry and signoz
 
 ## Test the project 
 

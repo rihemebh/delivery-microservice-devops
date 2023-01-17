@@ -1,0 +1,94 @@
+version: '2.4'
+
+services:
+  postgres:
+    restart: unless-stopped
+    container_name: postgres_container
+    image: postgres:12
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'password'
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+
+  rabbitmq:
+    restart: unless-stopped
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    networks:
+      - rabbitmq
+
+  recap_dev_ui_server:
+    container_name: recap_dev_ui_server
+    image: recapdev/server:0.6.3
+    environment:
+      postgresHost: postgres
+      postgresUsername: postgres
+      postgresPassword: password
+      postgresDatabase: postgres
+      POSTGRES_QUERY_TIMEOUT: 30000
+      TRACING_API_ENABLED: 'false'
+      BACKGROUND_JOBS_ENABLED: 'false'
+    mem_limit: 256m
+    ports:
+      - "8081:8081"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  recap_dev_tracing_server:
+    container_name: recap_dev_tracing_server
+    image: recapdev/server:0.6.3
+    environment:
+      postgresHost: postgres
+      postgresUsername: postgres
+      postgresPassword: password
+      postgresDatabase: postgres
+      QUEUE_URL: 'amqp://rabbitmq'
+      UI_ENABLED: 'false'
+      BACKGROUND_JOBS_ENABLED: 'false'
+    mem_limit: 256m
+    ports:
+      - "8080:8080"
+    networks:
+      - postgres
+      - rabbitmq
+    restart: unless-stopped
+
+  recap_dev_jobs:
+    container_name: recap_dev_jobs
+    image: recapdev/server:0.6.3
+    environment:
+      postgresHost: postgres
+      postgresUsername: postgres
+      postgresPassword: password
+      postgresDatabase: postgres
+      QUEUE_URL: 'amqp://rabbitmq'
+      UI_ENABLED: 'false'
+      TRACING_API_ENABLED: 'false'
+      TRACE_PROCESSING_BATCH_SIZE: 100
+      NODE_OPTIONS: --max-old-space-size=512
+    mem_limit: 512m
+    networks:
+      - postgres
+      - rabbitmq
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+  rabbitmq:
+    driver: bridge
+volumes:
+  postgres:
+  rabbitmq:
