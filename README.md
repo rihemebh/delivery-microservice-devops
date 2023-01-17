@@ -51,11 +51,17 @@ The reosons behind choosing the microservice architecture is:
  - For the microservices we should allow only the traffic from the api gateway
  - The different apps are isolated in their namespaces (which we give the possibility of having multi env) 
  - The connection to the database is made through the connection string (provided by mongodb atlas) and stored in a secret
- - I used confid maps to store the name of the services that will be used by the api gateway to send requets to microservices
+ - I used config maps to store the name of the services that will be used by the api gateway to send requets to microservices
      
      <img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/projet-Kubernetes%20architecture.drawio.png" width=500 height=650 />
      
-     
+### Workload health tracking 
+
+```/health``` is the route responsible of returning the pod's health implemneted using **terminus** package.
+
+livenessprobe is added to the deloyment definition in order to track the health based on the response of ```/health```
+
+
 ## Helm 
 
 I created helm charts with values file for every microservice. 
@@ -85,7 +91,7 @@ The deployment is automated using argoCD
 
 #### Tree of the order microservice 
 
-<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-order.png.png" />
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-order.png" />
 
 ## Monitoring 
 
@@ -104,9 +110,6 @@ The deployment is automated using argoCD
 ### Logs 
 
 Used Nest.js logger to collect logs. 
-
-### Traces 
-
 
 
 ## Test the project 
