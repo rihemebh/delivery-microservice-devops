@@ -66,6 +66,9 @@ I used the charts of prometheus and grafana in order to set the metrics.
 The provisioning of the cluster is made by the first stack of Terraform 
 The provisioning of the helm release of argocd is made by the second stack of Terraform 
 
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/projet-Terraform.drawio.png" />
+
+
 The deployment is automated using argoCD 
 
 // image 
@@ -78,7 +81,7 @@ A bussiness metric is called **order-count** is the one responsible for counting
 
 We can vizualize the diferent metrics using Grafana:
 
-//image 
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/Grafana.png" />
 
 
 
