@@ -79,11 +79,11 @@ Network visualization of the api-gateway
 
 The different metrics are set using prometheus: cpu usage, memory usage, number of requests..
 
-A bussiness metric is called **order-count** is the one responsible for counting the number of orders requested
+A bussiness metric is called **orders** is the one responsible for counting the number of orders requested
 
 We can vizualize the diferent metrics using Grafana:
 
-<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/grafana1.png" />
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/dashboard.png" />
 
 
 
