@@ -117,8 +117,8 @@ Used Nest.js logger to collect logs.
         Make sure that you have  all the tools installed
             
   - Clone the project 
-  - Under the **script** folder you will find 3 scripts  
-        - execute init_tf.bash 
-        - connect to the cluster 
-        - execute init_helm.bash
+  - Under the **script** folder you will find scripts  (you should be located under this folder)
+      - execute init_tf.bash 
+      - connect to the cluster 
+      - execute init_helm.bash
   
