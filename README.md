@@ -13,7 +13,7 @@ Microservice application developed with NestJs and deployed on kubernetes
 - Grafana 
 - ArgoCD
 
-## Overview (DEV)
+# Overview (DEV)
 
 Koultime is a mobile application that helps find your best food and order it online.
 
@@ -44,7 +44,7 @@ The reosons behind choosing the microservice architecture is:
 
 <img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/projet-MS%20architecture.drawio.png" width=500 height=250 />
 
-
+# Overview (OPS)
 
 ## Deployment
  - The client could only communicate with the api gateway: we should expose a public IP
