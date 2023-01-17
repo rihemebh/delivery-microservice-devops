@@ -1,5 +1,6 @@
 # About 
 
+
 Microservice application developed with NestJs and deployed on kubernetes 
 ## Prerequisite and Tool
 
@@ -118,7 +119,7 @@ Used Nest.js logger to collect logs.
         Make sure that you have  all the tools installed
             
   - Clone the project 
-  - Under the **script** folder you will find scripts  (you should be located under this folder)
+  - Under the **script** folder you will find scripts
       - execute init_tf.bash 
       - connect to the cluster 
       - execute init_helm.bash
