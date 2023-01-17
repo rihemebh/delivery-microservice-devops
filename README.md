@@ -1,20 +1,34 @@
 # About 
 
 Microservice application developed with NestJs and deployed on kubernetes 
+## Prerequisite and Tool
 
-## Overview 
+- Nestjs
+- Flutter 
+- Azure account 
+- Kubernetes
+- Terraform
+- Helm
+- Prometheus 
+- Grafana 
+- ArgoCD
 
-This application koultime help you order food to get delivered. 
+## Overview (DEV)
+
+Koultime is a mobile application that helps find your best food and order it online.
+
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/data%20(1).gif" width=400 height=450 />
+
+### Frontend: 
+- Mobile application developed with flutter
+
+### Backend:
+- Microservice application developed with Nest.js
+
 
 The reosons behind choosing the microservice architecture is:
 - The flexibility to add new services 
 - The ability to scale the service of orders independtly whenever we have a lot of demand 
-
-
-<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/data%20(1).gif" width=400 height=450 />
-
-
-
 
 - Orders Microservice: 
     - Create orders
@@ -48,6 +62,7 @@ I created helm charts with values file for every microservice.
 I used the charts of prometheus and grafana in order to set the metrics.
 
 ## Automation 
+
 The provisioning of the cluster is made by Terraform 
 
 The deployment is autamed using the helm charts already created 
@@ -58,10 +73,21 @@ The deployment is autamed using the helm charts already created
 
 The different metrics are set using prometheus: cpu usage, memory usage, number of requests..
 
-we can vizualize the diferent metrics using Grafana 
+A bussiness metric is called **order-count** is the one responsible for counting the number of orders requested
+
+we can vizualize the diferent metrics using Grafana:
 
 //image 
 
 
 
+## Test the project 
 
+        Make sure that you have  all the tools installed
+            
+  - Clone the project 
+  - Under the **script** folder you will find 3 scripts 
+  - Execute :
+        1.  init_tf.bash 
+        2.  init_helm.bash
+  
