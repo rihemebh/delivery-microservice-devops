@@ -2,7 +2,7 @@
 
 set -e
 
-TERR_PATH="$(readlink -f terraform)"
+TERR_PATH="../infrastructure/terraform"
 cd ${TERR_PATH}/stack_1
 terraform apply
 cd ${TERR_PATH}/stack_2
