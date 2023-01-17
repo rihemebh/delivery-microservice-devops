@@ -1,0 +1,13 @@
+apiVersion: v1
+name: gateway-chart
+description: A Helm chart for the api gateway of microservice app 
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: prometheus
+    version: '15.18.0'
+    repository: 'https://prometheus-community.github.io/helm-charts'
+  - name: grafana
+    version: '6.43.5'
+    repository: 'https://grafana.github.io/helm-charts'

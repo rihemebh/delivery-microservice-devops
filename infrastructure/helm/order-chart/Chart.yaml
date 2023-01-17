@@ -1,0 +1,6 @@
+apiVersion: v1
+name: order-chart
+description: A Helm chart for the order microservice  
+type: application
+version: 0.1.0
+

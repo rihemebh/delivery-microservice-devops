@@ -1,0 +1,37 @@
+apiVersion: {{ .Values.apiVersion}}
+kind: Deployment 
+metadata: 
+  name: {{ .Values.deployment.appname }}
+  namespace: {{ .Values.namespace }}
+  labels: 
+    app: {{ .Values.deployment.appname }}
+spec: 
+  replicas: {{ .Values.replicaCount}}
+  selector: 
+    matchLabels:
+      app: {{ .Values.deployment.appname }}
+  template: 
+    metadata:
+      labels:
+        app: {{ .Values.deployment.appname }}
+    spec:
+      containers: 
+        - name: {{ .Values.deployment.appname}}
+          image: {{ .Values.deployment.image }}
+          env:
+           - name: NODE_ENV
+             value: "production"
+           - name: "CONNECTION_STRING"
+             valueFrom: 
+               secretKeyRef:
+                  name: db
+                  key: "CONNECTION_STRING"
+          resources:  
+            requests:
+              memory: {{ .Values.deployment.memory.requests}}
+              cpu:  {{ .Values.deployment.cpu.requests}}
+            limits:
+              memory: {{ .Values.deployment.memory.limit}}
+              cpu: {{ .Values.deployment.cpu.limit}}
+          ports: 
+            - containerPort: {{ .Values.deployment.port }}

@@ -1,0 +1,31 @@
+replicaCount: 1
+apiVersion: apps/v1
+namespace: prod-ms-product
+deployment:
+  appname : product
+  image: dockeriheme/product
+  port: 3002
+  memory:
+    requests: "64Mi"
+    limit: "128Mi"
+  cpu:
+    requests: "250m"
+    limit: "500m"
+service:
+  name: product-service
+  type: NodePort
+  port: 3002
+
+
+
+prometheus:
+  alertmanager: 
+    enabled: false
+  pushgateway: 
+    enabled: false
+  nodeExporter: 
+    enabled: false
+
+grafana:
+  service:
+    type: NodePort

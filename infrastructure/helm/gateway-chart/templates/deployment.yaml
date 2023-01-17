@@ -1,0 +1,56 @@
+apiVersion: {{ .Values.apiVersion }}
+kind: Deployment 
+metadata: 
+  name: {{ .Values.deployment.appname }}
+  labels: 
+    app: {{ .Values.deployment.appname }}
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  selector: 
+    matchLabels:
+      app: {{ .Values.deployment.appname }}
+  template: 
+    metadata:
+      labels:
+        app: {{ .Values.deployment.appname }}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000"
+    spec:
+      containers: 
+        - name: {{ .Values.deployment.appname }}
+          image: {{ .Values.deployment.image }}
+          env:
+           - name: NODE_ENV
+             value: "production"
+           - name: "CONNECTION_STRING"
+             valueFrom: 
+               secretKeyRef:
+                  name: db
+                  key: "CONNECTION_STRING"
+           - name: "ORDER_HOST"
+             valueFrom:
+              configMapKeyRef:
+                name: global-configmap
+                key: ORDER_HOST
+           - name: "PRODUCT_HOST"
+             valueFrom:
+              configMapKeyRef:
+                name: global-configmap
+                key: PRODUCT_HOST
+          resources:  
+            requests:
+              memory: {{ toYaml .Values.deployment.memory.requests}}
+              cpu:  {{ toYaml .Values.deployment.cpu.requests}}
+            limits:
+              memory: {{ toYaml .Values.deployment.memory.limit}}
+              cpu: {{toYaml .Values.deployment.cpu.limit}}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{toYaml .Values.deployment.port}}
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          ports: 
+            - containerPort: {{ toYaml .Values.deployment.port}}

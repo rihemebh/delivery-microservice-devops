@@ -1,0 +1,31 @@
+replicaCount: 2
+apiVersion: apps/v1
+deployment:
+  appname : gateway-helm
+  image: dockeriheme/gateway
+  port: 3000
+  memory:
+    requests: "64Mi"
+    limit: "128Mi"
+  cpu:
+    requests: "250m"
+    limit: "500m"
+service:
+  name: gateway-service-helm
+  type: LoadBalancer
+  port: 3000
+
+
+prometheus:
+  alertmanager: 
+    enabled: false
+  pushgateway: 
+    enabled: false
+  nodeExporter: 
+    enabled: false
+  service: 
+    type: NodePort
+
+grafana:
+  service:
+    type: NodePort

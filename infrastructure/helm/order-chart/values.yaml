@@ -1,0 +1,19 @@
+replicaCount: 1
+apiVersion: apps/v1
+namespace: prod-ms-order
+deployment:
+  appname : order
+  image: dockeriheme/order
+  port: 3001
+  memory:
+    requests: "64Mi"
+    limit: "128Mi"
+  cpu:
+    requests: "250m"
+    limit: "500m"
+service:
+  name: order-service
+  type: NodePort
+  port: 3001
+
+
