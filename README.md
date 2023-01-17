@@ -90,8 +90,8 @@ We can vizualize the diferent metrics using Grafana:
         Make sure that you have  all the tools installed
             
   - Clone the project 
-  - Under the **script** folder you will find 3 scripts 
-  - Execute :
-        1.  init_tf.bash 
-        2.  init_helm.bash
+  - Under the **script** folder you will find 3 scripts  
+        - execute init_tf.bash 
+        - connect to the cluster 
+        - execute init_helm.bash
   
