@@ -63,11 +63,12 @@ I used the charts of prometheus and grafana in order to set the metrics.
 
 ## Automation 
 
-The provisioning of the cluster is made by Terraform 
+The provisioning of the cluster is made by the first stack of Terraform 
+The provisioning of the helm release of argocd is made by the second stack of Terraform 
 
-The deployment is autamed using the helm charts already created 
+The deployment is automated using argoCD 
 
-
+// image 
 
 ## Monitoring 
 
@@ -75,7 +76,7 @@ The different metrics are set using prometheus: cpu usage, memory usage, number 
 
 A bussiness metric is called **order-count** is the one responsible for counting the number of orders requested
 
-we can vizualize the diferent metrics using Grafana:
+We can vizualize the diferent metrics using Grafana:
 
 //image 
 
