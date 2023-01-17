@@ -32,14 +32,15 @@ The reosons behind choosing the microservice architecture is:
 - The flexibility to add new services 
 - The ability to scale the service of orders independtly whenever we have a lot of demand 
 
+Services :
 - Orders Microservice: 
     - Create orders
     - Get list of orders
 - Product Microservice 
     - Get list of products
     - Create new product
-   
- This microservices communicate with an api gateway 
+  
+ - The microservices communicate with an api gateway 
 
  
 ## Architecture 
