@@ -1,0 +1,7 @@
+#!/usr/bin/env bash  
+set -e 
+
+
+kubectl get secret gateway-chart-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+kubectl port-forward -n default deployment/gateway-chart-grafana 3000

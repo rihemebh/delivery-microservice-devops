@@ -59,7 +59,11 @@ The reosons behind choosing the microservice architecture is:
 ## Helm 
 
 I created helm charts with values file for every microservice. 
-I used the charts of prometheus and grafana in order to set the metrics.
+
+Check the charts [Here](https://github.com/rihemebh/delivery-microservice-devops/tree/main/infrastructure/helm)
+
+
+I used the charts of prometheus and grafana for monitoring.
 
 ## Automation 
 
@@ -71,19 +75,37 @@ The provisioning of the helm release of argocd is made by the second stack of Te
 
 The deployment is automated using argoCD 
 
-Network visualization of the api-gateway
+#### Network visualization of the api-gateway
 
 <img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-gateway.png" />
 
+#### Tree of the api-gateway
+
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-gateway-tree.png" />
+
+#### Tree of the order microservice 
+
+<img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/argo-order.png.png" />
+
 ## Monitoring 
 
-The different metrics are set using prometheus: cpu usage, memory usage, number of requests..
+### Metrics 
 
-A bussiness metric is called **orders** is the one responsible for counting the number of orders requested
+- The different metrics are set using prometheus: 
+    - cpu usage, memory usage, number of requests..
 
-We can vizualize the diferent metrics using Grafana:
+- A bussiness metric is called **orders** is the one responsible for counting the number of orders requested
+
+#### We can vizualize the diferent metrics using Grafana:
 
 <img src="https://github.com/rihemebh/delivery-microservice-devops/blob/main/dashboard.png" />
+
+
+### Logs 
+
+Used Nest.js logger to collect logs. 
+
+### Traces 
 
 
 
